@@ -71,7 +71,7 @@
 // @section info
 
 // Author info of this build printed to the host during boot and M115
-#define STRING_CONFIG_H_AUTHOR "(alpine, sappireTFT35)" // Who made the changes.
+#define STRING_CONFIG_H_AUTHOR "(IACU, RobinNanoTFT35)" // Who made the changes.
 //#define CUSTOM_VERSION_FILE Version.h // Path from the root directory (no quotes)
 
 
@@ -511,6 +511,9 @@
   #define DEFAULT_Kp 10.06
   #define DEFAULT_Ki 0.47
   #define DEFAULT_Kd 54.04
+  // remember to read and set the eeprom:
+  // m502
+  // m500
 
 #endif // PIDTEMP
 
@@ -568,7 +571,9 @@
   #define DEFAULT_bedKp 65.91
   #define DEFAULT_bedKi 12.65
   #define DEFAULT_bedKd 228.94
-
+  // remember to read and set the eeprom:
+  // m502
+  // m500
 
   // FIND YOUR OWN: "M303 E-1 C8 S90" to run autotune on the bed at 90 degreesC for 8 cycles.
 #endif // PIDTEMPBED
@@ -583,7 +588,7 @@
  * *** IT IS HIGHLY RECOMMENDED TO LEAVE THIS OPTION ENABLED! ***
  */
 #define PREVENT_COLD_EXTRUSION
-#define EXTRUDE_MINTEMP 170
+#define EXTRUDE_MINTEMP 140
 
 /**
  * Prevent a single extrusion longer than EXTRUDE_MAXLENGTH.
@@ -755,7 +760,7 @@
  *                                      X, Y, Z, E0 [, E1[, E2[, E3[, E4[, E5]]]]]
  */
 //@ settings from 1.0.3 stock firmware
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 415 }
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 492 }
 
 /**
  * Default Max Feed Rate (mm/s)
@@ -1110,8 +1115,8 @@
 #define Y_MIN_POS 0
 #define Z_MIN_POS 0
 #define X_MAX_POS X_BED_SIZE
-#define Y_MAX_POS 300
-#define Z_MAX_POS 300
+#define Y_MAX_POS Y_BED_SIZE
+#define Z_MAX_POS 320
 
 /**
  * Software Endstops
@@ -1150,7 +1155,7 @@
  * For other boards you may need to define FIL_RUNOUT_PIN, FIL_RUNOUT2_PIN, etc.
  * By default the firmware assumes HIGH=FILAMENT PRESENT.
  */
-#define FILAMENT_RUNOUT_SENSOR
+//#define FILAMENT_RUNOUT_SENSOR
 #if ENABLED(FILAMENT_RUNOUT_SENSOR)
   #define NUM_RUNOUT_SENSORS   1     // Number of sensors, up to one per extruder. Define a FIL_RUNOUT#_PIN for each.
   #define FIL_RUNOUT_INVERTING false // Set to true to invert the logic of the sensor.
@@ -1372,8 +1377,8 @@
 #define Z_SAFE_HOMING
 
 #if ENABLED(Z_SAFE_HOMING)
-  #define Z_SAFE_HOMING_X_POINT (46)    // X point for Z homing when homing all axes (G28).
-  #define Z_SAFE_HOMING_Y_POINT (100)    // Y point for Z homing when homing all axes (G28).
+  #define Z_SAFE_HOMING_X_POINT (5)    // X point for Z homing when homing all axes (G28).
+  #define Z_SAFE_HOMING_Y_POINT (5)    // Y point for Z homing when homing all axes (G28).
 #endif
 
 // Homing speeds (mm/m)
@@ -1515,7 +1520,7 @@
  *    P2  Raise the nozzle by Z-park amount, limited to Z_MAX_POS.
  */
 //@
-#define NOZZLE_PARK_FEATURE
+//#define NOZZLE_PARK_FEATURE
 
 #if ENABLED(NOZZLE_PARK_FEATURE)
   // Specify a park position as { X, Y, Z_raise }
