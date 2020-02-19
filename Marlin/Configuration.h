@@ -142,7 +142,7 @@
 
 // Name displayed in the LCD "Ready" message and Info menu
 //@
-#define CUSTOM_MACHINE_NAME "Sapphire Pro"
+#define CUSTOM_MACHINE_NAME "Sapphire PLUS"
 
 // Printer's unique ID, used by some programs to differentiate between machines.
 // Choose your own or use a service like http://www.uuidgenerator.net/version4
@@ -502,9 +502,15 @@
   //#define DEFAULT_Kd 440
 
   //@ SapphirePro 50W MonsterHeater (full metal heatbreak, no sock no fans @200° C)
-  #define DEFAULT_Kp 15.36
-  #define DEFAULT_Ki 1.13
-  #define DEFAULT_Kd 52.03
+  //#define DEFAULT_Kp 15.36
+  //#define DEFAULT_Ki 1.13
+  //#define DEFAULT_Kd 52.03
+
+  // Sapphire PLUS all stock hotend autotuned
+  // M303 E0 S200 C8
+  #define DEFAULT_Kp 10.06
+  #define DEFAULT_Ki 0.47
+  #define DEFAULT_Kd 54.04
 
 #endif // PIDTEMP
 
@@ -554,9 +560,15 @@
   //#define DEFAULT_bedKd 1675.16
 
   // SapphirePro 24V Heater C5 S50
-  #define DEFAULT_bedKp 45.99
-  #define DEFAULT_bedKi 8.69
-  #define DEFAULT_bedKd 60.84
+  //#define DEFAULT_bedKp 45.99
+  //#define DEFAULT_bedKi 8.69
+  //#define DEFAULT_bedKd 60.84
+
+  // Sapphire PLUS default bed + ultrabase 300x300
+  #define DEFAULT_bedKp 65.91
+  #define DEFAULT_bedKi 12.65
+  #define DEFAULT_bedKd 228.94
+
 
   // FIND YOUR OWN: "M303 E-1 C8 S90" to run autotune on the bed at 90 degreesC for 8 cycles.
 #endif // PIDTEMPBED
@@ -687,12 +699,12 @@
 //@ Sapphire Pro setup
 #define X_DRIVER_TYPE  TMC2208_STANDALONE
 #define Y_DRIVER_TYPE  TMC2208_STANDALONE
-#define Z_DRIVER_TYPE  A4988
+#define Z_DRIVER_TYPE  TMC2208_STANDALONE
 //#define X2_DRIVER_TYPE A4988
 //#define Y2_DRIVER_TYPE A4988
 //#define Z2_DRIVER_TYPE A4988
 //#define Z3_DRIVER_TYPE A4988
-#define E0_DRIVER_TYPE A4988
+#define E0_DRIVER_TYPE TMC2208_STANDALONE
 //#define E1_DRIVER_TYPE A4988
 //#define E2_DRIVER_TYPE A4988
 //#define E3_DRIVER_TYPE A4988
@@ -743,7 +755,7 @@
  *                                      X, Y, Z, E0 [, E1[, E2[, E3[, E4[, E5]]]]]
  */
 //@ settings from 1.0.3 stock firmware
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 1600, 415 }
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 415 }
 
 /**
  * Default Max Feed Rate (mm/s)
@@ -1054,7 +1066,7 @@
 //@ TMC2208 behavior
 #define INVERT_X_DIR true
 #define INVERT_Y_DIR true
-#define INVERT_Z_DIR false
+#define INVERT_Z_DIR true
 
 // @section extruder
 
@@ -1090,16 +1102,16 @@
 //@
 
 // The size of the print bed
-#define X_BED_SIZE 210
-#define Y_BED_SIZE 210
+#define X_BED_SIZE 300
+#define Y_BED_SIZE 300
 
 // Travel limits (mm) after homing, corresponding to endstop positions.
-#define X_MIN_POS -5
+#define X_MIN_POS 0
 #define Y_MIN_POS 0
 #define Z_MIN_POS 0
 #define X_MAX_POS X_BED_SIZE
-#define Y_MAX_POS 215
-#define Z_MAX_POS 220
+#define Y_MAX_POS 300
+#define Z_MAX_POS 300
 
 /**
  * Software Endstops
@@ -1204,14 +1216,14 @@
 //#define AUTO_BED_LEVELING_LINEAR
 //#define AUTO_BED_LEVELING_BILINEAR
 //#define AUTO_BED_LEVELING_UBL
-#define MESH_BED_LEVELING
+//#define MESH_BED_LEVELING
 
 /**
  * Normally G28 leaves leveling disabled on completion. Enable
  * this option to have G28 restore the prior leveling state.
  */
 //@
-#define RESTORE_LEVELING_AFTER_G28
+//#define RESTORE_LEVELING_AFTER_G28
 
 /**
  * Enable detailed logging of G28, G29, M48, etc.
@@ -1310,7 +1322,7 @@
  * Include a guided procedure if manual probing is enabled.
  */
 //@
-#define LCD_BED_LEVELING
+//#define LCD_BED_LEVELING
 
 #if ENABLED(LCD_BED_LEVELING)
   #define MESH_EDIT_Z_STEP  0.025 // (mm) Step size while manually probing Z axis.
