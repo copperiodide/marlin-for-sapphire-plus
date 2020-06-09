@@ -498,7 +498,7 @@
 //#define SLOW_PWM_HEATERS      // PWM with very low frequency (roughly 0.125Hz=8s) and minimum state time of approximately 1s useful for heaters driven by a relay
 //#define PID_PARAMS_PER_HOTEND // Uses separate PID parameters for each extruder (useful for mismatched extruders)
 // Set/get with gcode: M301 E[extruder number, 0-2]
-#define PID_FUNCTIONAL_RANGE 10 // If the temperature difference between the target temperature and the actual temperature \
+#define PID_FUNCTIONAL_RANGE 10 // If the temperature difference between the target temperature and the actual temperature 
                                 // is more than PID_FUNCTIONAL_RANGE then the PID will be shut off and the heater will be set to min/max.
 
 // If you are using a pre-configured hotend then you can use one of the value sets by uncommenting it
@@ -779,7 +779,7 @@
 //@ settings from 1.0.3 stock firmware
 #define DEFAULT_AXIS_STEPS_PER_UNIT \
   {                                 \
-    80, 80, 400, 492                \
+    80, 80, 400, 409                \
   }
 
 /**
@@ -810,7 +810,7 @@
 //@ keep speed reasonable
 #define DEFAULT_MAX_ACCELERATION \
   {                              \
-    4000, 4000, 200, 2000        \
+    6000, 6000, 200, 12000        \
   }
 
 //#define LIMITED_MAX_ACCEL_EDITING     // Limit edit via M201 or LCD to DEFAULT_MAX_ACCELERATION * 2
@@ -830,9 +830,9 @@
  *   M204 T    Travel Acceleration
  */
 //@ keep speed reasonable
-#define DEFAULT_ACCELERATION 1500         // X, Y, Z and E acceleration for printing moves
-#define DEFAULT_RETRACT_ACCELERATION 1000 // E acceleration for retracts
-#define DEFAULT_TRAVEL_ACCELERATION 2000  // X, Y, Z acceleration for travel (non printing) moves
+#define DEFAULT_ACCELERATION 3000         // X, Y, Z and E acceleration for printing moves
+#define DEFAULT_RETRACT_ACCELERATION 2000 // E acceleration for retracts
+#define DEFAULT_TRAVEL_ACCELERATION 4000  // X, Y, Z acceleration for travel (non printing) moves
 
 /**
  * Default Jerk limits (mm/s)
@@ -857,7 +857,7 @@
 #endif
 #endif
 
-#define DEFAULT_EJERK 10.0 // May be used by Linear Advance @lowered to keep extruder from rattling
+#define DEFAULT_EJERK 20.0 // May be used by Linear Advance @lowered to keep extruder from rattling
 
 /**
  * Junction Deviation Factor
@@ -1128,7 +1128,7 @@
 //@
 //#define UNKNOWN_Z_NO_RAISE // Don't raise Z (lower the bed) if Z is "unknown." For beds that fall when Z is powered off.
 
-#define Z_HOMING_HEIGHT 2 // (mm) Minimal Z height before homing (G28) for Z clearance above the bed, clamps, ... \
+#define Z_HOMING_HEIGHT 2 // (mm) Minimal Z height before homing (G28) for Z clearance above the bed, clamps, ... 
                           // Be sure you have this distance over your Z_MAX_POS in case.
 
 // Direction of endstops when homing; 1=MAX, -1=MIN
@@ -1154,7 +1154,7 @@
 #define Z_MIN_POS 0
 #define X_MAX_POS X_BED_SIZE
 #define Y_MAX_POS Y_BED_SIZE
-#define Z_MAX_POS 320
+#define Z_MAX_POS 300
 
 /**
  * Software Endstops
